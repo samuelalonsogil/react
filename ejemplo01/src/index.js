@@ -8,10 +8,16 @@ import Saludador from "./Components/Saludador";
 import ComponenteProps from "./Components/ComponenteProps.";
 import ComponenteMapeado from "./Components/ComponenteMapeado";
 import ComponenteEventos from "./Components/ComponenteEventos";
+import ComponenteGrados from "./Components/ComponenteGrados";
+import ComponenteNumRandom from "./Components/ComponenteNumRandom";
 
 ReactDOM.render(
     <React.StrictMode>
-        <ComponenteEventos />
+            <ComponenteNumRandom/>
+        <ComponenteGrados
+            funcionGrados = {gradosC=>(gradosC*9/5)+32}
+        />
+        <ComponenteEventos/>
         <ComponenteMapeado />
         <ComponenteProps
             mensaje = 'hola props'
