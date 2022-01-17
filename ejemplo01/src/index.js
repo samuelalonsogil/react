@@ -6,9 +6,13 @@ import ComponenteConClases from "./Components/ComponenteConClases";
 import ComponenteConFunciones from "./Components/ComponenteConFunciones";
 import Saludador from "./Components/Saludador";
 import ComponenteProps from "./Components/ComponenteProps.";
+import ComponenteMapeado from "./Components/ComponenteMapeado";
+import ComponenteEventos from "./Components/ComponenteEventos";
 
 ReactDOM.render(
     <React.StrictMode>
+        <ComponenteEventos />
+        <ComponenteMapeado />
         <ComponenteProps
             mensaje = 'hola props'
             valor = {10}
@@ -18,11 +22,8 @@ ReactDOM.render(
             miJsx = {<p>Soy un Jsx</p>}
             otroComponente = {<Saludador nombre = 'Juan' apellido = 'Montero'/>}
         />
-
         <Saludador nombre = 'Samu' apellido = 'Alonso'/>
-
         <ComponenteConClases />
-
         <ComponenteConFunciones />
   </React.StrictMode>,
   document.getElementById('root')
