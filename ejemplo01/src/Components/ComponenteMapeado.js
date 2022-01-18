@@ -1,7 +1,8 @@
 export default function ComponenteMapeado(props){
     const nombres = ['naranja', 'limon', 'pera', 'manzana']
     return <ul>
-        {nombres.map(fruta => <li>{fruta}</li>)}
+                                    //key distinta para cada elemento
+        {nombres.map(fruta => <li key={fruta}>{fruta}</li>)}
     </ul>
 }
 

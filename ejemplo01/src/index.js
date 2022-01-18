@@ -10,9 +10,19 @@ import ComponenteMapeado from "./Components/ComponenteMapeado";
 import ComponenteEventos from "./Components/ComponenteEventos";
 import ComponenteGrados from "./Components/ComponenteGrados";
 import ComponenteNumRandom from "./Components/ComponenteNumRandom";
-
+import ComponenteTemporizador from "./Components/ComponenteTemporizador";
+import Pokemon from "./Components/Pokemon";
+import Pokedex from "./Components/Pokedex";
+import Peliculas from "./Components/Peliculas";
 ReactDOM.render(
     <React.StrictMode>
+    <Peliculas titulo = {'ali g'}/>
+    <Pokedex cantidad={3}/>
+        <Pokemon
+            url = 'https://pokeapi.co/api/v2/pokemon/ditto'
+        />
+        <ComponenteTemporizador
+        />
             <ComponenteNumRandom/>
         <ComponenteGrados
             funcionGrados = {gradosC=>(gradosC*9/5)+32}
