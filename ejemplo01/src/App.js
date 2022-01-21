@@ -18,7 +18,7 @@ function App() {
     <div>
       <Routes>
         <Route path = "/" element = {<Saludador nombre = 'Samu' apellido = 'Alonso'/>} />
-        <Route path = "pokedex" element = {<Pokedex cantidad={5}> </Pokedex>} />
+        <Route path = "pokedex" element = {<Pokedex cantidad={100}> </Pokedex>} />
         <Route path = "random" element = {<ComponenteNumRandom> </ComponenteNumRandom>}> </Route>
         <Route path = 'temp/:grados' element = {<ComponenteGrados funcionGrados={gradosC => (gradosC * 9 / 5) + 32}/>}/>
         <Route path = 'pokemon' element = {<Pokemon url = 'https://pokeapi.co/api/v2/pokemon/ditto' />}/>
