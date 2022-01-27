@@ -12,10 +12,12 @@ import ComponenteMapeado from "./Components/ComponenteMapeado";
 import ComponenteProps from "./Components/ComponenteProps.";
 import ComponenteConClases from "./Components/ComponenteConClases";
 import ComponenteConFunciones from "./Components/ComponenteConFunciones";
+import NavBar from "./Components/NavBar";
 
 function App() {
   return (
     <div>
+        <NavBar/>
       <Routes>
         <Route path = "/" element = {<Saludador nombre = 'Samu' apellido = 'Alonso'/>} />
         <Route path = "pokedex" element = {<Pokedex cantidad={100}> </Pokedex>} />
