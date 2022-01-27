@@ -2,10 +2,10 @@ import{app}from './firebase.js'
 
 const db = app.firestore();
 
-const getAllTecnologias = collection(db,'tecnologias');
+const getAllTecnologias = collection(db,'ejercicioAngel');
 
 const getTecnologiasOrderedByDate = query(
-    collection(db,'tecnologias'),
+    collection(db,'ejercicioAngel'),
     orderBy('createdAt','desc'),
     limit(100)
 );
