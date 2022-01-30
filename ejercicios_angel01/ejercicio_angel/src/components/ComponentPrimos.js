@@ -1,5 +1,5 @@
 export default function ComponentePrimos(props){
-    return esPrimo(props.numero) ? <p>Es primo</p> : <p>No es primo</p>
+    return esPrimo(props.numero) ? <p>El número {props.numero}  es primo</p> : <p>El número {props.numero} no es primo</p>
 }
 
 

@@ -13,6 +13,7 @@ import ComponenteProps from "./Components/ComponenteProps.";
 import ComponenteConClases from "./Components/ComponenteConClases";
 import ComponenteConFunciones from "./Components/ComponenteConFunciones";
 import NavBar from "./Components/NavBar";
+import ListaTecnologiasFireBase from "./Components/ListaTecnologiasFireBase";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path = 'pokemon' element = {<Pokemon url = 'https://pokeapi.co/api/v2/pokemon/ditto' />}/>
         <Route path = 'peliculas' element = {<Peliculas titulo = {'ali g'}/>}/>
         <Route path = 'temporizador' element = {<ComponenteTemporizador/>}/>
+        <Route path = 'tecnologias' element = {<ListaTecnologiasFireBase/>}/>
         <Route path = 'props' element =
             {
               <ComponenteProps

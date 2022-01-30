@@ -1,5 +1,7 @@
 import { onSnapshot } from '@firebase/firestore';
 import {useEffect, useState} from "react";
+import {getClase} from "../services/tecnologias";
+
 export default function ComponenteClase() {
     const [integrantes, setIntegrantes] = useState([]);
 
