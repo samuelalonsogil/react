@@ -6,5 +6,6 @@ export default function Navbar(){
         <Link to = 'lista'> Lista de super héroes </Link>
         <Link to = 'primo'> Número primo </Link>
         <Link to = 'clase'> Clase de 2 DAM </Link>
+        <Link to = 'formulario'> Formulario </Link>
     </div>
 }

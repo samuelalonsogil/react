@@ -1,5 +1,9 @@
-export default function ComponentePrimos(props){
-    return esPrimo(props.numero) ? <p>El número {props.numero}  es primo</p> : <p>El número {props.numero} no es primo</p>
+import {useParams} from "react-router-dom";
+
+export default function ComponentePrimos(){
+    const {parametro} = useParams();
+
+    return esPrimo(parametro) ? <p>El número {parametro}  es primo</p> : <p>El número {parametro} no es primo</p>
 }
 
 
