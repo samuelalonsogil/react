@@ -1,17 +1,32 @@
 import {useState} from "react";
-
 export default function BuscadorEmojis(){
     const [nombre, setNombre] = useState('');
-    const [emojis, setEmojis] = useState('');
+    const [emojis, setEmojis] = useState(arrayEmojis);
 
+    let filter = (element) => {
+        element.preventDefault();
+        let keyWord = element.target.value;
 
-
+        if (keyWord!=='' || keyWord!==null){
+            let result = arrayEmojis.filter( (em) => { return arrayEmojis.symbol; } );
+            setEmojis(result);
+        }else setEmojis(arrayEmojis);
+        setNombre(keyWord);
+    };
     return <div>
         <form >
             <label>
-
+                <input type="text" value={nombre} onChange={filter}/>
             </label>
         </form>
+        <div>
+            {emojis && emojis.length > 0 ? emojis.map( (emoji) => (
+                <li key={emoji.title}>
+                    <span>{emoji.symbol}</span>
+                </li>
+            ) ) :
+                (<h1>Sin resultados</h1>)}
+        </div>
     </div>
 }
 
