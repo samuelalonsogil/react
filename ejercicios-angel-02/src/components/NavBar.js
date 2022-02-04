@@ -6,6 +6,7 @@ export default function NavBar(){
             <li><Link to ="/">Home</Link></li>
             <li><Link to ="lista-numeros">Lista de números</Link></li>
             <li><Link to ="busca-emojis">Buscador emojis</Link></li>
+            <li><Link to ="buscador-prueba">Buscador de prueba</Link></li>
         </ul>
     </div>
 }

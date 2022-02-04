@@ -8,26 +8,32 @@ export default function BuscadorEmojis(){
         let keyWord = element.target.value;
 
         if (keyWord!=='' || keyWord!==null){
-            let result = arrayEmojis.filter( (em) => { return arrayEmojis.symbol; } );
+            let result = arrayEmojis.filter( (em) => em.title.toLowerCase().startsWith(keyWord.toLowerCase() )  );
             setEmojis(result);
-        }else setEmojis(arrayEmojis);
+            }
+        else setEmojis(arrayEmojis);
         setNombre(keyWord);
     };
-    return <div>
-        <form >
+
+    let preventDefault = (element) =>element.preventDefault();
+
+
+    return (<div>
+        <form onSubmit={preventDefault}>
             <label>
                 <input type="text" value={nombre} onChange={filter}/>
             </label>
         </form>
         <div>
             {emojis && emojis.length > 0 ? emojis.map( (emoji) => (
-                <li key={emoji.title}>
-                    <span>{emoji.symbol}</span>
-                </li>
-            ) ) :
+                    <li key={emoji.title}>
+                        <span>{emoji.symbol}</span>
+                    </li>
+                ) ) :
                 (<h1>Sin resultados</h1>)}
         </div>
     </div>
+    )
 }
 
 
