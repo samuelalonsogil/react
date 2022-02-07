@@ -7,6 +7,7 @@ export default function NavBar(){
             <li><Link to ="lista-numeros">Lista de números</Link></li>
             <li><Link to ="busca-emojis">Buscador emojis</Link></li>
             <li><Link to ="buscador-prueba">Buscador de prueba</Link></li>
+            <li><Link to ="colores">Colores</Link></li>
         </ul>
     </div>
 }
