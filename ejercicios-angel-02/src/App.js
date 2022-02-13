@@ -6,7 +6,7 @@ import ListaNumeros from './components/ListaNumeros'
 import Home from "./components/Home";
 import BuscadorEmojis from "./components/BuscadorEmojis";
 import BuscadorPrueba from "./components/BuscadorPrueba";
-import SelectColour from "./components/SelectColour";
+import SetColour from "./components/SetColour";
 import GetColours from "./components/GetColours";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route path="lista-numeros" element = { <ListaNumeros/> } />
         <Route path="busca-emojis" element = { <BuscadorEmojis/> } />
         <Route path="buscador-prueba" element = { <BuscadorPrueba/> } />
-          <Route path="colores" element = { <GetColours otroComponente = {<SelectColour name = "rojo"/>} /> } />
+        <Route path="colores" element = { <GetColours/> } />
       </Routes>
     </div>
   );
