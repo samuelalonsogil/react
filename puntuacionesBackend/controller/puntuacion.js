@@ -1,4 +1,4 @@
-import {Puntuacion} from '../models/puntuacion.js';
+import {Puntuacion} from '../modules/puntuacion.js';
 
 async function getAll(req,res) {
     //callbacks
