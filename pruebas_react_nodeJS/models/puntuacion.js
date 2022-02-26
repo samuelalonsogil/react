@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
-let Schema = mongoose.Schema;
+const {Schema} = mongoose;
 
-let puntuacionSchema = Schema(
+let PuntuacionSchema = new Schema(
     {
         _id: { type: Schema.ObjectId, auto:true },
         name : String,
         puntuacion: Number
     }
 )
-module.exports = mongoose.model('Score', puntuacionSchema);
+const Puntuacion = mongoose.model('Score', PuntuacionSchema);
+export { Puntuacion };

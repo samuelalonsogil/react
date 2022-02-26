@@ -1,6 +1,6 @@
 import express from 'express';
 let router = express.Router();
-let controller = require('../controller/puntuacion');
+import * as controller from '../controller/puntuacion.js'
 
 router.get('/', controller.getAll);
 router.get('/:id', controller.getById);
