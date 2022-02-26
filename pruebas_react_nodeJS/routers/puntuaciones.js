@@ -1,5 +1,5 @@
 import express from 'express';
-let router = express.Router();
+export let router = express.Router();
 import * as controller from '../controller/puntuacion.js'
 
 router.get('/', controller.getAll);

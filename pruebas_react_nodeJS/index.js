@@ -8,11 +8,17 @@ import {router as routerPuntuacion} from './routers/puntuaciones.js';
 
 let app = express();
 
+/*bodyParser para transformar las peticiones de tipo text a json*/
 app.use(bodyParser.urlencoded( {extended:false} )  );
 app.use(bodyParser.json() );
+
 app.use( morgan('dev') );
+app.use( cors() );
+
+/*http://localhost:localhost5300/puntuacion*/
 app.use( '/puntuacion', routerPuntuacion );
 
-app.use( (req, res, next) =>{
-    res.header( 'Acces-Control-Allow-Origin','*' )
-} )
+const run = async () => {
+    await mongoose.connect(  )
+}
+
