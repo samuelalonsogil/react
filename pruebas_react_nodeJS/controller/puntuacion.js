@@ -1,5 +1,11 @@
 import {Puntuacion} from "../models/puntuacion.js";
+import Joi from 'joi';
 
+const schemaInsertar = Joi.object({
+        name:Joi.string().min(3).max(5) ,
+        puntuacion : Joi.number().integer().min(0).max(5).required(),
+        user : Joi.string().min(10)
+    });
 
 /*lista todos los elementos*/
 async function getAll(req, res){
@@ -44,6 +50,29 @@ async function insert(req, res){
     }
 }
 
+
+/*insertar elemento validando campos*/
+async function insertValidate(req, res){
+
+    /*validate fields*/
+    try{
+        const{error,value}=await schemaInsertar.validateAsync(req.body);
+        console.log(value)
+        console.log(error)
+    }catch(err){
+        return res.status(400).json( { accion: 'insertar puntuaciones', mensaje: 'error insertar puntuaciones ' + err } )
+    }
+
+    let puntuacion = new Puntuacion(req.body);
+    try{
+        let puntuacionGuardada = await puntuacion.save();
+        res.status(200).json( {accion: 'save one', datos: puntuacionGuardada} );
+    }catch (err){
+        res.status(500).json( {accion: 'save', mensaje: 'error al guardar puntuacion' } );
+    }
+}
+
+
 /*eliminar elemento por id*/
 async function remove(req, res){
     let puntuacionId = req.params.id;
@@ -78,4 +107,4 @@ async function update(req, res){
 }
 
 
-export {getAll, getById, insert, remove, update, getScoresCero, removeAll};
+export {getAll, getById, insert, remove, update, getScoresCero, removeAll, insertValidate};

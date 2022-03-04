@@ -2,6 +2,8 @@ import {User} from "../models/user.js";
 import Joi from 'joi';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
+import mongoose from "mongoose";
+import {Puntuacion} from "../models/puntuacion.js";
 
 
 const schemaLogin = Joi.object( {
@@ -23,13 +25,14 @@ const schemaRegister = Joi.object( {
 } )
 
 
-
 /*loggearse*/
 async function loginUser(req, res){
 
     /*validate fields*/
     try{
         const{error,value}=await schemaLogin.validateAsync(req.body);
+        console.log(value)
+        console.log(error)
     }catch(err){
         return res.status(400).json( { accion: 'login', mensaje: 'error logging ' + err } )
     }
@@ -60,6 +63,15 @@ async function loginUser(req, res){
 /*register user*/
 async function register(req, res){
 
+    try {
+        const { error, value } = await schemaRegister.validateAsync(req.body)
+        console.log(value)
+        console.log(error)
+    }
+    catch (err) {
+        return res.status(400).json({accion:'register user', mensaje:'error al guardar el usuario'+err})
+    }
+
     try{
         /*check if user exists*/
         let existingUser = await User.findOne( {email:req.body.email} );
@@ -84,7 +96,6 @@ async function register(req, res){
 
 }
 
-
 /*lista todos los elementos*/
 async function getAll(req, res){
     try{
@@ -94,7 +105,6 @@ async function getAll(req, res){
         res.status(500).json( {accion: 'get all users', mensaje: 'error al obtener users'} );
     }
 }
-
 
 /*listar elemento por id*/
 async function getById(req, res){
@@ -107,7 +117,6 @@ async function getById(req, res){
         res.status(500).json( {accion: 'get one user', mensaje: 'error al obtener la puntuacion'} );
     }
 }
-
 
 /*eliminar elemento por id*/
 async function remove(req, res){
@@ -142,5 +151,45 @@ async function update(req, res){
     }
 }
 
+/*insert score in user*/
+async function insertScore(req,res){
+    const session = await mongoose.startSession();
 
-export {getAll, getById, remove, update, removeAll, register, loginUser};
+    try{
+
+        session.startTransaction();
+
+        let userId = req.params.id;
+        let userSearched = await User.findById(userId);
+        let newPuntuation = new Puntuacion(req.body);
+        let savedPuntuation = await newPuntuation.save();
+        userSearched.scores.push(savedPuntuation);
+        let savedUser = await userSearched.save();
+
+        await session.commitTransaction();
+
+        res.status(200).json( { accion: 'save', datos: savedUser } );
+    }catch ( err ){
+        console.log(err);
+        await session.abortTransaction();
+        res.status(500).json( { accion: 'save', mensaje: 'error saving score' } );
+    }
+}
+
+/*show scores by id*/
+async function showScoresById(req, res){
+
+    try{
+        let userId = req.params.id;
+        let user = await User.findById(userId);
+        let userName = user.userName;
+        let userScores = user.scores;
+
+        res.status(200).json( {accion: 'get one user',userName:userName, datos: userScores} );
+    }catch (err){
+        res.status(500).json( {accion: 'get one user', mensaje: 'error al obtener la puntuacion'} );
+    }
+
+}
+
+export {getAll, getById, remove, update, removeAll, register, loginUser, insertScore, showScoresById};
