@@ -5,7 +5,8 @@ let PuntuacionSchema = new Schema(
     {
         _id: { type: Schema.ObjectId, auto:true },
         name : String,
-        puntuacion: Number
+        puntuacion: Number,
+        user: {type: Schema.ObjectId, ref: 'User'}
     }
 )
 const Puntuacion = mongoose.model('Score', PuntuacionSchema);

@@ -1,0 +1,12 @@
+import express from "express";
+let router = express.Router();
+import * as controller from '../controller/user.js';
+
+router.get('/',  controller.getAll);
+router.get('/:id', controller.getById);
+router.post('/register', controller.register);
+router.post('/login', controller.loginUser);
+router.delete('/:id', controller.remove);
+router.put('/:id', controller.update);
+
+export { router };

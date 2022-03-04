@@ -5,7 +5,10 @@ import morgan from 'morgan';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import {router as routerPuntuacion} from './routers/puntuaciones.js';
+import {router as routerProducts} from './routers/producto.js';
+import {router as routerUsers} from './routers/user.js';
 
+dotenv.config();
 let app = express();
 
 /*bodyParser para transformar las peticiones de tipo text a json*/
@@ -15,10 +18,29 @@ app.use(bodyParser.json() );
 app.use( morgan('dev') );
 app.use( cors() );
 
-/*http://localhost:localhost5300/puntuacion*/
+
+/*headers*/
+app.use( (req, res, next) =>{
+    res.header('Acces-Control-Allow-Origin');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+
+    next();
+} )
+
+/*http://localhost:5300/puntuacion*/
 app.use( '/puntuacion', routerPuntuacion );
+app.use('/product', routerProducts);
+app.use('/user',routerUsers);
+
+app.get('/', (req, res) => { res.send('Bienvenido a nuestro backend') })
 
 const run = async () => {
-    await mongoose.connect(  )
+    await mongoose.connect(process.env.URL_BASEDATOS, { useNewUrlParser: true, useUnifiedTopology: true });
+    await app.listen(process.env.PUERTO_SERVIDOR);
+    console.log("Servidor y base de datos arrancados");
 }
+run().catch(err => console.log('Fallo al arrancar:' + err));
+
 
