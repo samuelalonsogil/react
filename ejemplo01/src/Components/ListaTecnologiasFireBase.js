@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {onSnapshot} from '@firebase/firestore'
-import {getAllTecnologias} from "../../services/tecnologias";
+import {getAllTecnologias} from "../services/tecnologias";
 
 export default function ListaTecnologiasFireBase(){
     const[tecnologias, setTecnologias] = useState([]);
@@ -15,5 +15,6 @@ export default function ListaTecnologiasFireBase(){
         return () =>unsuscribe();
     }, [] )
 
-    return {tecnologias.map(tecnologia=><div>{tecnologia.nombre}</div>)}
+    return <>
+        {tecnologias.map(tecnologia=><div>{tecnologia.nombre}</div>)}</>
 }
