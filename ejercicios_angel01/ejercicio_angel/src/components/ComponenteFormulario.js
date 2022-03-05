@@ -18,11 +18,8 @@ export default function ComponenteFormulario(){
 
     let handleChange = (e) => {
         const {name, value} = e.target;
-        if (name === "nombre") {
-            setNombre(value);
-        } else {
-            setEdad(value);
-        }
+        if (name === "nombre") setNombre(value);
+        if (name === "edad") setEdad(value);
     }
     return <div>
         <form onSubmit={handleSubmit}>
