@@ -27,6 +27,18 @@ async function getScoresCero(req, res){
     }
 }
 
+/*lista todos elementos mayores que un valor*/
+async function getScoresHigherThan(req, res){
+    try{
+        let value = req.query.higher;
+        console.log(value);
+        let puntuaciones = await Puntuacion.find( {puntuacion : {$gt: value}} );
+        res.status(200).json( {accion: 'get puntuaciones higher than ' + value, datos: puntuaciones} );
+    }catch (err){
+        res.status(500).json( {accion: 'get puntuaciones higher than ' , mensaje: 'error al obtener las puntuaciones higher'} );
+    }
+}
+
 /*listar elemento por id*/
 async function getById(req, res){
     let puntuacionId = req.params.id;
@@ -107,4 +119,4 @@ async function update(req, res){
 }
 
 
-export {getAll, getById, insert, remove, update, getScoresCero, removeAll, insertValidate};
+export {getAll, getById, insert, remove, update, getScoresCero, removeAll, insertValidate, getScoresHigherThan};

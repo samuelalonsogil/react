@@ -14,7 +14,7 @@ import ComponenteConClases from "./Components/ComponenteConClases";
 import ComponenteConFunciones from "./Components/ComponenteConFunciones";
 import NavBar from "./Components/NavBar";
 import ListaTecnologiasFireBase from "./Components/ListaTecnologiasFireBase";
-
+import PokedexV2 from "./Components/PokedexV2";
 function App() {
   return (
     <div>
@@ -45,6 +45,8 @@ function App() {
         <Route path = 'mapeado' element = {<ComponenteMapeado />}/>
         <Route path = 'clases' element = {<ComponenteConClases />}/>
         <Route path = 'funciones' element = {<ComponenteConFunciones />}/>
+        <Route path = 'pokedexV2' element = {<PokedexV2/>}/>
+
 
 
       </Routes>

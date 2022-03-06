@@ -16,8 +16,12 @@ export default function ScoresInserted(){
 
         <h3> Score lists </h3>
         <ul>
-            { scores.map(score => <li key = {score._id} > {score.score} </li> ) }
+            { scores.map(score => <li key = {score._id} > <span className="puntuacion" >score: {score.puntuacion}</span>
+                <br/> name: {score.name}
+                <br/> user: {score.user}
+            </li> ) }
         </ul>
+
 
     </>
 }
