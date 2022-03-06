@@ -16,7 +16,7 @@ function NavBar() {
             <Link to = '/formLogUser'> User log </Link>
             <br/>
             <Link to = '/deleteAllScores'> Delete all scores </Link>
-
+            {localStorage.getItem('tokenLogin') && <p>Logged</p>}
         </div>
 
 

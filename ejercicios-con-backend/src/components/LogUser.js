@@ -52,9 +52,9 @@ export default function LogUser(){
                 </label>
 
                 <br/>
-                <input type='submit' value='send'/>
+                <input type='submit' value='login'/>
                 <br/>
-                {check?<span>User logged {email}</span>: <span>no logged </span> }
+
             </form>
 
 
