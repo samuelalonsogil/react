@@ -4,7 +4,11 @@ export default function NavBar(){
     return <>
 
         <div>
-            <Link to={'/'} >Home</Link>
+            <ul>
+                <li><Link to={'/'} >Home</Link></li>
+                <li><Link to={'/fireBase'} >Firebase</Link></li>
+                <li><Link to={'/formAudio'} >Audio transcription</Link></li>
+            </ul>
         </div>
     </>
 }

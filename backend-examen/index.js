@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import morgan from 'morgan';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import {router as wordRouter} from './routers/wordRouter.js';
 
 /*import {router as routerPuntuacion} from './routers/puntuaciones.js';
 import {router as routerProducts} from './routers/producto.js';
@@ -31,9 +32,7 @@ app.use( (req, res, next) =>{
 } )
 
 /*http://localhost:5300/puntuacion*/
-app.use( '/puntuacion', routerPuntuacion );
-app.use('/product', routerProducts);
-app.use('/user',routerUsers);
+app.use( '/word', wordRouter );
 
 app.get('/', (req, res) => { res.send('Bienvenido a nuestro backend') })
 
